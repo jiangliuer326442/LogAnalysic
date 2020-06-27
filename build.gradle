@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.mustafa.bigdata'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+}
+
+ext {
+    hadoopVersion = "2.6.0" //hadoop版本号
+    hiveVersion = "1.1.0" //hive版本号
+}
+
+dependencies {
+    implementation "org.apache.hadoop:hadoop-client:$hadoopVersion"
+    implementation "org.apache.hive:hive-jdbc:$hiveVersion"
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'commons-lang:commons-lang:2.6'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
