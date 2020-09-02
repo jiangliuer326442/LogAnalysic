@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group 'com.mustafa.bigdata'
@@ -10,18 +9,26 @@ sourceCompatibility = 1.8
 
 repositories {
     maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+//    maven{ url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
 }
 
 ext {
-    hadoopVersion = "2.6.0" //hadoop版本号
-    hiveVersion = "1.1.0" //hive版本号
+    sparkVersion = "3.0.0" //spark版本号
+    scalaVersion = "2.12" //scala版本号
+    hadoopVersion = "3.3.0" //hadoop版本号
+    hiveVersion = "2.3.7" //hive版本号
+    hbaseVersion = "1.2.0" //hbase版本号
 }
 
 dependencies {
     implementation "org.apache.hadoop:hadoop-client:$hadoopVersion"
     implementation "org.apache.hive:hive-jdbc:$hiveVersion"
+    implementation "org.apache.hbase:hbase-client:$hbaseVersion"
+    implementation "org.apache.spark:spark-core_$scalaVersion:$sparkVersion"
+    implementation "org.apache.spark:spark-sql_$scalaVersion:$sparkVersion"
     implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'commons-lang:commons-lang:2.6'
+    implementation "mysql:mysql-connector-java:5.1.49"
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
